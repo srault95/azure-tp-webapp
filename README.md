@@ -1,5 +1,10 @@
 # Image Apache/PHP pour TP Azure
 
+L'image est construit à partir d'une image existante : https://hub.docker.com/r/webdevops/php-apache dont la documentation se trouve ici: https://dockerfile.readthedocs.io/en/latest/content/DockerImages/dockerfiles/php-apache.html
+
+
+## Création et publication de l'image
+
 ```bash
 # Se loguer a la registry créée sur Azure
 docker login srault.azurecr.io
@@ -16,4 +21,12 @@ docker tag azure-tp:uat srault.azurecr.io/azure-tp:uat
 
 # Envoyer l'image dans la registry
 docker push srault.azurecr.io/azure-tp:uat
+```
+
+## Le Dockerfile
+
+```
+FROM webdevops/php-apache:7.1-alpine
+
+COPY index.php /app
 ```
